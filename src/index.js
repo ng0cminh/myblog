@@ -1,5 +1,9 @@
 const path = require('path')
 const express = require('express')
+
+//import router
+const router = require('./routes');
+
 const handlebars  = require('express-handlebars');
 
 const app = express()
@@ -11,9 +15,7 @@ app.engine('hbs', handlebars({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
-app.get('/', function (req, res) {
-    res.render('home');
-});
+router(app)
 
  
 app.listen(3000, () => {
