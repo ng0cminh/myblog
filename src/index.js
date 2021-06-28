@@ -4,10 +4,13 @@ const express = require('express')
 //import router
 const router = require('./routes');
 
+// Import view engine
 const handlebars  = require('express-handlebars');
 
 const app = express()
 
+//  ussage file static
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.engine('hbs', handlebars({
   extname: '.hbs',
@@ -15,6 +18,7 @@ app.engine('hbs', handlebars({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
+// use router
 router(app)
 
  
